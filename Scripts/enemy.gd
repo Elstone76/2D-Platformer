@@ -3,8 +3,8 @@ extends Area2D
 @export var move_direction : Vector2
 @export var move_speed : float = 20
 
-@export var start_pos : Vector2 = global_position
-@export var target_pos : Vector2 = global_position + move_direction
+@onready var start_pos : Vector2 = global_position
+@onready var target_pos : Vector2 = global_position + move_direction
 
 func _ready(): 
 	$AnimationPlayer.play("fly")
