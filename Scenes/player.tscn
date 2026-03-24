@@ -1,8 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://c4ywbklgco3up"]
+[gd_scene load_steps=14 format=3 uid="uid://c4ywbklgco3up"]
 
 [ext_resource type="Script" uid="uid://doxeb1l1qpx4w" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://dhqh7ypev0gq0" path="res://Sprites/Characters/character_0000.png" id="1_v0iea"]
 [ext_resource type="Texture2D" uid="uid://dy1spoj54r63p" path="res://Sprites/Characters/character_0001.png" id="3_6t5aa"]
+[ext_resource type="Script" uid="uid://ba0tp0uynq6ol" path="res://Scripts/player_ui.gd" id="4_fkybt"]
+[ext_resource type="Script" uid="uid://b30wcfhlufcsj" path="res://Scripts/camera_shake.gd" id="4_x3wgy"]
+[ext_resource type="Texture2D" uid="uid://cnq4lxsfycmig" path="res://Sprites/Objects/tile_0044.png" id="5_x3wgy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cvnsp"]
 height = 24.0
@@ -78,6 +81,11 @@ _data = {
 &"move": SubResource("Animation_x3wgy")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_3smsa"]
+font_size = 38
+shadow_size = 6
+shadow_color = Color(0, 0, 0, 0.52156866)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_cvnsp")
 
@@ -99,3 +107,34 @@ libraries = {
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-1, -24)
 zoom = Vector2(3, 3)
+script = ExtResource("4_x3wgy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("4_fkybt")
+
+[node name="HealthContainer" type="HBoxContainer" parent="CanvasLayer"]
+offset_right = 362.0
+offset_bottom = 80.0
+
+[node name="Heart" type="TextureRect" parent="CanvasLayer/HealthContainer"]
+layout_mode = 2
+texture = ExtResource("5_x3wgy")
+expand_mode = 2
+
+[node name="Heart2" type="TextureRect" parent="CanvasLayer/HealthContainer"]
+layout_mode = 2
+texture = ExtResource("5_x3wgy")
+expand_mode = 2
+
+[node name="Heart3" type="TextureRect" parent="CanvasLayer/HealthContainer"]
+layout_mode = 2
+texture = ExtResource("5_x3wgy")
+expand_mode = 2
+
+[node name="ScoreText" type="Label" parent="CanvasLayer"]
+offset_left = 21.0
+offset_top = 64.0
+offset_right = 251.0
+offset_bottom = 117.0
+text = "Score: 500"
+label_settings = SubResource("LabelSettings_3smsa")

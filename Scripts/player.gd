@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+signal OnUpdateHealth (health : int)
+signal OnUpdateScore (score : int)
+
 @export var move_speed : float = 100
 @export var acceleration : float = 50
 @export var breaking : = 20
@@ -12,6 +15,10 @@ var move_input : float
 
 @onready var sprite : Sprite2D = $Sprite
 @onready var anim : AnimationPlayer = $AnimationPlayer
+@onready var audio : AudioStreamPlayer = $AudioStreamPlayer
+
+var take_damage_sfx : AudioStream = preload("res://Audio/take_damage.wav")
+var coin_sfx : AudioStream = preload("res://Audio/coin.wav")
 
 func _physics_process(delta):
 	# gravity
@@ -36,6 +43,9 @@ func _physics_process(delta):
 func _process(delta):
 	if velocity.x != 0:
 		sprite.flip_h = velocity. x > 0
+	
+	if global_position.y > 200: 
+		game_over()
 
 	_manage_animaion()
 
@@ -49,13 +59,27 @@ func _manage_animaion ():
 	
 func take_damage (amount : int):
 	health -= amount
+	OnUpdateHealth.emit(health)
+	_damage_flash()
+	play_sound(take_damage_sfx)
 	
 	if health <= 0:
 		call_deferred("game_over")
 	
 func game_over ():
-	get_tree().change_scene_to_file("res://Scenes/level_1.tscn")
+	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
 
 func increase_score (amount : int):
 	PlayerStats.score += amount 
-	print(PlayerStats.score) 
+	OnUpdateScore.emit(PlayerStats.score) 
+	play_sound(coin_sfx)
+	
+func _damage_flash ():
+	sprite.modulate = Color.RED
+	await get_tree().create_timer(0.05).timeout
+	sprite.modulate = Color.WHITE
+	
+func play_sound (sound : AudioStream):
+	audio.stream = sound
+	audio.play()
+	
