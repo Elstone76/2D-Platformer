@@ -12,6 +12,7 @@ signal OnUpdateScore (score : int)
 @export var health : int = 3
 
 var move_input : float
+var can_double_jump : bool = false # Tracks if the double jump is available
 
 @onready var sprite : Sprite2D = $Sprite
 @onready var anim : AnimationPlayer = $AnimationPlayer
@@ -24,6 +25,8 @@ func _physics_process(delta):
 	# gravity
 	if not is_on_floor():
 		velocity.y += gravity * delta
+	else:
+		can_double_jump = true # Reset the double jump when hitting the ground
 	
 	# get the move inuput 
 	move_input = Input.get_axis("move_left", "move_right")
@@ -34,9 +37,13 @@ func _physics_process(delta):
 	else:
 		velocity.x = lerp(velocity.x, 0.0, breaking * delta)
 	
-	# jumping 
-	if Input.is_action_pressed("jump") and is_on_floor():
-		velocity.y = -jump_force
+	# jumping & double jumping
+	if Input.is_action_just_pressed("jump"):
+		if is_on_floor():
+			velocity.y = -jump_force
+		elif can_double_jump:
+			velocity.y = -jump_force
+			can_double_jump = false # Consume the double jump
 	
 	move_and_slide()
 	
@@ -82,8 +89,3 @@ func _damage_flash ():
 func play_sound (sound : AudioStream):
 	audio.stream = sound
 	audio.play()
-	
-	var move_input : float
-	var has_doubled_jump : bool = false
-	
-	
