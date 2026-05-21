@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://dsuvmype5tdc3"]
+[gd_scene load_steps=10 format=4 uid="uid://dsuvmype5tdc3"]
 
 [ext_resource type="Texture2D" uid="uid://fpfme8tl7dus" path="res://Sprites/Backgrounds/backgroundForest.png" id="1_8ffim"]
 [ext_resource type="Script" uid="uid://dtga16ttsg15q" path="res://Scripts/background_parailax.gd" id="1_lsmp6"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bs4sv0e718rwc" path="res://Scenes/coin.tscn" id="5_6444e"]
 [ext_resource type="PackedScene" uid="uid://dljemt7ogcqt7" path="res://Scenes/end_flag.tscn" id="6_evi0p"]
 [ext_resource type="PackedScene" uid="uid://dnq2s5im11k5a" path="res://Scenes/level_2.tscn" id="8_xrdnt"]
+[ext_resource type="AudioStream" uid="uid://1hqgxdme1gan" path="res://Audio/gdajunglemusic.mp3" id="9_wrinw"]
 
 [node name="Main" type="Node2D"]
 
@@ -117,3 +118,6 @@ move_speed = 120.0
 [node name="EndFlag" parent="." instance=ExtResource("6_evi0p")]
 position = Vector2(811, -99)
 scene_to_load = ExtResource("8_xrdnt")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_wrinw")
