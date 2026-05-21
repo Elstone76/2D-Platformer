@@ -83,3 +83,7 @@ func play_sound (sound : AudioStream):
 	audio.stream = sound
 	audio.play()
 	
+	var move_input : float
+	var has_doubled_jump : bool = false
+	
+	
