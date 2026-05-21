@@ -42,7 +42,7 @@ func _physics_process(delta):
 	
 func _process(delta):
 	if velocity.x != 0:
-		sprite.flip_h = velocity. x > 0
+		sprite.flip_h = velocity. x < 0
 	
 	if global_position.y > 200: 
 		game_over()
@@ -82,4 +82,8 @@ func _damage_flash ():
 func play_sound (sound : AudioStream):
 	audio.stream = sound
 	audio.play()
+	
+	var move_input : float
+	var has_doubled_jump : bool = false
+	
 	
