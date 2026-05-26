@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://ddsf24dxxc10d"]
+
+[node name="Label" type="Label"]
+offset_right = 1782.7826
+offset_bottom = 153.0
+text = "CONGRATS YOU FOUND THE FLAG!"
+vertical_alignment = 1
+visible_characters = 609
+visible_ratio = 21.75
