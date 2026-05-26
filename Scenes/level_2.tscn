@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bs4sv0e718rwc" path="res://Scenes/coin.tscn" id="5_t7v2y"]
 [ext_resource type="PackedScene" uid="uid://dt1r6he6ky4pp" path="res://Scenes/enemy.tscn" id="6_ait6c"]
 [ext_resource type="PackedScene" uid="uid://dljemt7ogcqt7" path="res://Scenes/end_flag.tscn" id="7_vcilj"]
-[ext_resource type="PackedScene" uid="uid://c4susmodemprs" path="res://Scenes/menu.tscn" id="8_2mgoq"]
+[ext_resource type="PackedScene" uid="uid://dqya0k4xjjln1" path="res://Scenes/level_3.tscn" id="8_uhnj4"]
 [ext_resource type="AudioStream" uid="uid://1hqgxdme1gan" path="res://Audio/gdajunglemusic.mp3" id="9_uhnj4"]
 
 [node name="Main" type="Node2D"]
@@ -145,7 +145,7 @@ move_speed = 37.0
 
 [node name="EndFlag" parent="." instance=ExtResource("7_vcilj")]
 position = Vector2(1202, -99)
-scene_to_load = ExtResource("8_2mgoq")
+scene_to_load = ExtResource("8_uhnj4")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_uhnj4")

@@ -1,0 +1,99 @@
+[gd_scene load_steps=9 format=4 uid="uid://cc7g24sbq23od"]
+
+[ext_resource type="Script" uid="uid://dtga16ttsg15q" path="res://Scripts/background_parailax.gd" id="1_d1g0i"]
+[ext_resource type="Texture2D" uid="uid://b7lal5468nkj" path="res://Sprites/Backgrounds/Morning/Jungle_Morning_1.jpg" id="2_wwss2"]
+[ext_resource type="TileSet" uid="uid://bflv6wtvteymx" path="res://Sprites/Tiles/new_tile_set.tres" id="4_fwq7q"]
+[ext_resource type="PackedScene" uid="uid://c4ywbklgco3up" path="res://Scenes/player.tscn" id="5_et1a7"]
+[ext_resource type="PackedScene" uid="uid://c4susmodemprs" path="res://Scenes/menu.tscn" id="6_wwss2"]
+[ext_resource type="PackedScene" uid="uid://dljemt7ogcqt7" path="res://Scenes/end_flag.tscn" id="8_1bvsx"]
+[ext_resource type="AudioStream" uid="uid://1hqgxdme1gan" path="res://Audio/gdajunglemusic.mp3" id="10_el8bu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vbw3r"]
+font_size = 20
+
+[node name="Main" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+script = ExtResource("1_d1g0i")
+
+[node name="BackgroundSprite" type="Sprite2D" parent="Background"]
+modulate = Color(0.8392157, 0.8745098, 0.7882353, 1)
+position = Vector2(-400, 103)
+scale = Vector2(0.69870144, 0.6015022)
+texture = ExtResource("2_wwss2")
+
+[node name="BackgroundSprite4" type="Sprite2D" parent="Background"]
+modulate = Color(0.8392157, 0.8745098, 0.7882353, 1)
+position = Vector2(500.00006, -47)
+scale = Vector2(0.56795526, 0.41692987)
+
+[node name="BackgroundSprite5" type="Sprite2D" parent="Background"]
+modulate = Color(0.8392157, 0.8745098, 0.7882353, 1)
+position = Vector2(-1022, 0)
+scale = Vector2(0.5, 0.5)
+
+[node name="BackgroundSprite2" type="Sprite2D" parent="Background"]
+modulate = Color(0.8392157, 0.8745098, 0.7882353, 1)
+position = Vector2(742, 4)
+scale = Vector2(0.5, 0.5)
+
+[node name="BackgroundSprite3" type="Sprite2D" parent="Background"]
+modulate = Color(0.8392157, 0.8745098, 0.7882353, 1)
+position = Vector2(1025, -1)
+scale = Vector2(0.5, 0.5)
+
+[node name="Background2" type="Sprite2D" parent="Background"]
+position = Vector2(401.5, -72)
+scale = Vector2(3.7762096, 3.0514705)
+
+[node name="JungleMorning9" type="Sprite2D" parent="Background"]
+position = Vector2(55, 99)
+
+[node name="Reference(2)" type="Sprite2D" parent="Background"]
+position = Vector2(1253, -30)
+scale = Vector2(0.858438, 0.85843796)
+
+[node name="Reference(1)" type="Sprite2D" parent="Background"]
+position = Vector2(884, 52)
+scale = Vector2(0.66229326, 0.64874303)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(9, 0)
+tile_map_data = PackedByteArray("AAD8/wAAAQAAABkAAAD9/wAAAQABABkAAAD+/wAAAQACABkAAAD//wAAAQADABkAAAAAAAAAAQAEABkAAAD8/wEAAQAAABoAAAD9/wEAAQABABoAAAD+/wEAAQACABoAAAD//wEAAQADABoAAAAAAAEAAQAEABoAAAD8/wIAAQAAABsAAAD9/wIAAQABABsAAAD+/wIAAQACABsAAAD//wIAAQADABsAAAAAAAIAAQAEABsAAAA=")
+tile_set = ExtResource("4_fwq7q")
+
+[node name="Player" parent="." instance=ExtResource("5_et1a7")]
+position = Vector2(-46, -12)
+
+[node name="EndFlag" parent="." instance=ExtResource("8_1bvsx")]
+position = Vector2(6, -14)
+scene_to_load = ExtResource("6_wwss2")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_el8bu")
+autoplay = true
+
+[node name="ImageWithoutMist" type="Sprite2D" parent="."]
+position = Vector2(-207, 247)
+
+[node name="Reference(2)" type="Sprite2D" parent="."]
+position = Vector2(-513, 402)
+
+[node name="Background1" type="Sprite2D" parent="."]
+position = Vector2(1253, -28.5)
+scale = Vector2(0.7137097, 0.8786765)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -431.0
+offset_top = -121.0
+offset_right = 356.0
+offset_bottom = -19.0
+grow_horizontal = 2
+text = "CONGRATS YOU BEAT LEVEL 3 AND 
+FOUND THE 
+FLAG!!!"
+label_settings = SubResource("LabelSettings_vbw3r")
+horizontal_alignment = 1
